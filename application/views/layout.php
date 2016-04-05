@@ -16,10 +16,6 @@
 	    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
 	    <!-- END FAVICON -->
 
-	    <!-- RALEWAY FONT -->
-	    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"/>
-	    <!-- END RALEWAY FONT -->
-
 	   	<!-- STYLESHEETS -->
 	   	<link rel="stylesheet" href="css/normalize.css">
 	    <link rel="stylesheet/less" type="text/css" href="css/main.less" />
@@ -146,10 +142,10 @@
 
 		<!-- SCRIPTS -->
 			<!-- JQUERY -->
-        	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        	<script src="js/vendor/jquery.min.js"></script>
+  <!--       	<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script> -->
         	<!-- ANGULARJS -->
-        	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        	<script src="js/vendor/angular.min.js"></script>
 			<!-- PLUGINS.JS -->
 			<script src="js/plugins.js"></script>
 			<!-- MAIN.JS -->
