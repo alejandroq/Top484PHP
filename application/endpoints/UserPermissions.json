@@ -1,0 +1,55 @@
+[
+    {
+        "Admin": {
+            "Dashboard" : {
+                "link":"admin/dashboard.html",
+                "text":"Dashboard"
+            },
+            "Accounts" : {
+                "link":"admin/accounts.html",
+                "text":"Manage Accounts"
+            },
+            "Events" : {
+                "link":"admin/events.html",
+                "text":"Manage Events"
+            },
+            "Content" : {
+                "link":"admin/content.html",
+                "text":"Manage Content"
+            },
+            "Notification" : {
+                "link":"admin/holler.html",
+                "text":"Notification Blast"
+            }
+        },
+        "Student": {
+            "Evaluate" : {
+                "link":"student/evaluate.html",
+                "text":"Evaluate Class"
+            }
+            "Evaluations" : {
+                "link":"student/evaluations.html",
+                "text":"View Evaluations"
+            }
+            "Search" : {
+                "link":"student/search.html",
+                "text":"Search Classes"
+            }
+            "Portfolio" : {
+                "link":"student/portfolio.html",
+                "text":"View Portfolio"
+            }
+        },
+        "Instructor": { //take attendance, submit lesson plan, submit student evals, view your evaluations, view calendar
+
+        },
+        "Parents": { //view your student content, write a letter of encourag, view students eval, view calendar, email instrcutor
+
+        },
+        "Cipher": { //view students profiles, view calendar, donation
+
+        }
+    }
+]
+
+    // view calendar as a global IA

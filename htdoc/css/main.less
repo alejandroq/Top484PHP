@@ -1,10 +1,10 @@
 //variables 
-@bodyColor:#F0F0FF;
-@bgColor:#cccccc;
-@tblHeader:@bgColor + #333;
-@tblRowAlts:@bgColor + #111;
-@bgColorDarker:@bgColor + #444; 
-@hoverColor:@bgColor - #222; 
+@bodyColor:#F0EEED;//F0EEED
+@bgColor:#172129;//172129
+@headerShadowColor:@bgColor+#222;
+@textColor:white;
+@tblRowAlts:#B6D9F6;
+@hoverColor:#22EECF; 
 @mobileIcon:1.7em;
 
 //mixins
@@ -34,9 +34,9 @@ fieldset,hr{border:0;padding:0}html{color:#222;font-size:1em;line-height:1.4}::-
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
   position: relative;
-  width: 100%;
+  width: 100 %;
   max-width: 1080px;
-  margin: 0 auto;
+  margin: 2em auto;
   padding: 0 20px;
   box-sizing: border-box; }
 .column,
@@ -53,7 +53,7 @@ fieldset,hr{border:0;padding:0}html{color:#222;font-size:1em;line-height:1.4}::-
 }
 
 /* For devices larger than 550px */
-@media (min-width: 855px) {
+@media (min-width: 800px) {
   .container {
     width: 80%; }
   .column,
@@ -127,8 +127,7 @@ html {
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
-  font-weight: 400;
-  // font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
   color: #222; }
 
 
@@ -162,7 +161,8 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: white; }
+  color: white; 
+  text-decoration: none}
 a:hover {
   color: #FFFAFA; 
   cursor: pointer; 
@@ -212,7 +212,8 @@ input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
   color: #FFF;
-  background-color: #33C3F0;
+  background-color: @hoverColor - #222; //#33C3F0
+  .transition(all .5s);
   border-color: #33C3F0; }
 .button.button-primary:hover,
 button.button-primary:hover,
@@ -225,7 +226,7 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #1EAEDB;
+  background-color: @hoverColor - #444; //#1EAEDB
   border-color: #1EAEDB; }
 
 
@@ -242,9 +243,10 @@ textarea,
 select {
   height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
-  background-color: #fff;
+  background-color: @bgColor; //#fff
   border: 1px solid #D1D1D1;
   border-radius: 4px;
+  color: white;
   box-shadow: none;
   box-sizing: border-box; }
 /* Removes awkward default styles on some inputs for iOS */
@@ -329,22 +331,49 @@ pre > code {
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+  @media (max-width:860px) {
+    font-size: .95em;
+  }
+  tbody {
+    a { 
+    color:@hoverColor - #444;
+    text-decoration: underline;
+    }
+  }
+}
 th,
 td {
   padding: 12px 15px;
+  @media (max-width:835px) {
+      padding: 5px 10px;
+  } 
   text-align: left;
   border-bottom: 1px solid #E1E1E1; overflow: hidden; }
 th:first-child,
 td:first-child {
-  padding-left: 0; }
+  padding-left: .75em;
+  @media (max-width:781px) {
+      padding-left: .3em;
+  } 
+}
 th:last-child,
 td:last-child {
-  padding-right: 0; }
+  padding-right: .75em; 
+  @media (max-width:781px) {
+      padding-left: .3em;
+  } 
+}
 tr:nth-child(even) {
   background-color: @tblRowAlts;
 }
-thead tr {
-  background-color: @tblHeader;
+thead{
+  background-color: @bgColor;
+  font-weight: bold;
+  color: white;
+}
+thead td {
+  // text-align: center;
 }
 
 
@@ -410,7 +439,10 @@ hr {
    ========================================================================== */
 body {
   background-color: @bodyColor;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+.inline {
+  display: inline;
 }
 a {
   color: inherit;
@@ -419,19 +451,43 @@ a {
   }
 }
 header {
+  z-index: 9999;
+  width: 100%;
+  top: 0;
+  position: fixed;
   background-color: @bgColor;
-  margin-bottom: 2em;
-  padding: 1em;
+  color:@textColor;
+  box-shadow: 0 .1em .1em grey;
+  border-bottom: .15em solid @hoverColor;
+  .transition(all .6s);
+  #wrapper {
+    position: relative;
+    padding: 2.5em;
+    background-image: url(../img/header.jpg);
+    background-repeat: no-repeat;
+    background-size:cover;
+    box-shadow: 0 .2em .2em @headerShadowColor;
+    .transition(all .6s);
+  }
   img {
-    width: 118px * .75;
-    height: 69px * .75;
+    width: 118px * .90;
+    height: 69px * .90;
+    .transition(all .6s);
+  }
+  .logo-shrink {
+    width: 118px * .2;
+    height: 69px * .2;
   }
   li {
     display: inline;
     padding: 1em;
   }
   nav {
-    @media (min-width:855px) {
+    font-size: 1.2em;
+    padding-left:1em;
+    padding-right:1em;
+    white-space: nowrap;
+    @media (min-width:800px) {
       display: inline !important; 
     }
     h5 {
@@ -441,53 +497,68 @@ header {
     li {
       margin:1em 0em;
       line-height:4em;
+      font-weight: 500;
       padding: (2.7em/2) 1em (2.7em/2) 1em;
-    @media (max-width:855px){
+      .transition(all .1s);
+    @media (max-width:800px){
       display: block;
       margin-top: 0em;
       margin-bottom: 0em;
       padding: .1em 1em;
       line-height: 2em;
     }
+    @media (max-width:800px){
+      &:hover {
+        background-color:@hoverColor - #444;
+        color: inherit;
+        border-radius: .15em;
+      }
+    }
   }
-    @media (max-width:855px){
+    @media (max-width:800px){
       padding: 2em;
-      background-color: @bgColorDarker;
+      background-color: @hoverColor;
+      color: @bgColor;
       display: none;
     }
   }
+ul {
+  border-radius: .2em;
+}
 .navigation_controls {
-  width: 23em;
-  vertical-align: center;
-  margin-top:.65em;
+  margin-top:.75em;
   margin-bottom: 0em;
   float:right;
-  @media (max-width:945px){
-    width: 17em;
-  }
-  @media (max-width:855px){
-    width: 30em;
+  border-radius: .2em;
+  @media (max-width:800px){
+    width: 33em;
     float: none;
-    margin:.5em auto -.25em;
+    margin:.75em auto;
   }
-  @media (max-width:445px){
-    width: 20em;
+  @media (max-width:515px){
+    width: 25em;
+  }
+  input {
+    margin-bottom: 0;
   }
   .selected {
     background-color: @hoverColor;
+    color: @bgColor;
+    border-radius: .15em;
   }
 }
 #branding {
   display: inline;
   max-width: 118px;
-  @media (max-width:855px){
+  .transition(all 2s);
+  @media (max-width:800px){
     display: block;
-    margin: .3em auto;
+    margin: 1em auto;
   }
 }
-#branding-logo{
+#branding-logo {
     margin: .3em 1em;
-    display: inline;
+    display: block;
   }
   #search {
     display: inline;
@@ -495,15 +566,17 @@ header {
     text-indent: 1.5em;
     font-size: 1em;
     padding: 1.2em .5em;
-    @media (max-width:855px){
+    @media (max-width:800px){
       margin-top:.2em; 
       margin-bottom: 0em;
     }
     input {
       text-indent: 2em;
+      color:white;
     }
     .fa-search {
       position: absolute;
+      color:white;
       top:1em;
       left:0em;
       font-size: 1.2em;
@@ -511,49 +584,52 @@ header {
   }
   .mobile-only {
     display: none;
-    @media (max-width:855px){
+    @media (max-width:800px){
       display: inline;
     }
   }
-  .mobile-only-li {
-    display: none;
-    @media (max-width:855px){
-      display: block;
-    } 
-  }
-  .mobile-last-li {
-    @media (max-width:855px){
-      margin-bottom: 1em;
-    }
-  }
   .icon {
-    @media (max-width:855px){
+      font-size: 1.2em;
+    @media (max-width:800px){
       font-size: @mobileIcon;
       vertical-align: middle;
     }
   }
 }
-.scrollable {
-  overflow: scroll;
+.shrink {
+  padding: .1em 0 !important;
+  .opacity(70);
+}
+.menu-shrink {
+  font-weight: 300 !important;
+  font-size: .9em;
+  line-height: 0em;
+  margin-bottom: 0em;
+  height: 1em;
+  @media (max-width:800px) {
+    height: 2.8em;
+  }
+}
+.nav-shrink {
+  font-size: .9em;
+  line-height: 0em;
+  margin-bottom: 0em;
+}
+.header-shrink {
+  background-color: rgba(23,33,41,0.9);
 }
 li:hover {
   cursor: pointer;
-  background-color: @hoverColor !important;
+  color: @hoverColor;
 }
 .usupur {
   display: inline;
-  @media (max-width:945px){
-    display: none;
-  }
-  @media (max-width:855px){
-    display: inline;
-  }
-  @media (max-width:445px){
+  @media (max-width:515px){
     display: none;
   }
 }
 .no-mobile {
-  @media (max-width:855px){
+  @media (max-width:800px){
     display: none;
   }
 }
@@ -561,18 +637,27 @@ aside{
   float: left;
   margin-right: 2em;
   margin-bottom: 1.5em;
-  @media (max-width:855px){
+  @media (max-width:800px){
     width: 100%;
   }
 }
-article {
-  margin-bottom: 1.5em;
-}
 footer {
-  padding: 2em;
+  padding: .25em;
   background-color: @bgColor;
+  border-top:.15em solid @hoverColor;
+  box-shadow: 0 -.1em .1em @headerShadowColor;
+  color:white;
+  text-align: center;
+  font-size: .8em;
+  .icon {
+    margin:.5em;
+    font-size: 1.5em;
+    color:white;
+    &:hover {
+      color: @hoverColor;
+    }
+  }
   h6 {
-    border-bottom-style: solid;
     border-bottom-width: .1em;
   }
   ul {
@@ -585,95 +670,105 @@ li {
     display: none;
   }
 }
-#menu {
-    li {
-      ul{
-        display: block;
-      }
-  }
+article {
+  margin-top: 17em;
 }
 #wall {
-  overflow: scroll;
   margin-bottom: 2em;
-  background: @bgColor; /* For browsers that do not support gradients */
-  background: -webkit-radial-gradient(circle, (@bgColor - #222), @bodyColor, @bodyColor); /* Safari 5.1 to 6.0 */
-  background: -o-radial-gradient(circle, (@bgColor - #222), @bodyColor, @bodyColor); /* For Opera 11.6 to 12.0 */
-  background: -moz-radial-gradient(circle, (@bgColor - #222), @bodyColor, @bodyColor); /* For Firefox 3.6 to 15 */
-  background: radial-gradient(circle, (@bgColor - #222), @bodyColor, @bodyColor); /* Standard syntax */
-
-}
-/* ==========================================================================
-   jQuery UI Helper classes
-   ========================================================================== */
-.pre-menu {
-  margin: 0em 1em 0em 1em;
-}
-.ui-menu {
-  width: 12em; 
-  margin-left: 1.2em;
-  margin-bottom: 1em;
-  /*font-size: .8em;*/
-  @media (max-width:856px){
-    width: 100%;
-    margin-left: 0em;
-    .transition (all 2s);
-  }
-  @media (min-width:855px){
-    .transition (all .25s);
+  color: white;
+  background: @bodyColor - #111; /* For browsers that do not support gradients */
+  .transition(all 2s);
+  -moz-box-shadow:    3px 3px 5px 6px @bodyColor - #111;
+  -webkit-box-shadow: 3px 3px 5px 6px @bodyColor - #111;
+  box-shadow:         3px 3px 5px 6px @bodyColor - #111;
+  @media (min-width:750px) {
+    background: -webkit-radial-gradient(circle, (@bodyColor - #333), @bodyColor - #222, @bodyColor); /* Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(circle, (@bodyColor - #333), @bodyColor - #222, @bodyColor); /* For Opera 11.6 to 12.0 */
+    background: -moz-radial-gradient(circle, (@bodyColor - #333), @bodyColor - #222, @bodyColor); /* For Firefox 3.6 to 15 */
+    background: radial-gradient(circle, (@bodyColor - #333), @bodyColor - #222, @bodyColor); /* Standard syntax */
   }
 }
-.ui-menu-large { 
-  min-width: 25em;
-  position: absolute; 
-  right:0em; z-index: 1000;
-  @media (max-width:855px){
-    width: 100%;
-    margin-left: 0em;
-    .transition (all 2s);
-  }
-  @media (min-width:855px){
-    .transition (all .25s);
-  }
-}
-.ui-widget-header{
-  &:hover {
-    background-color: inherit !important;
-  }
-}
-.ui-state-active {
-  background-color: @bgColor !important;
-  border-color:@hoverColor !important;
-}
-.ui-icon-list{
-  i {
-    display: inline;
-    margin-right: .5em;
-  }
-  li {
-    overflow: hidden;
+nav {
+    font-size: 1.2em;
+    padding-left:1em;
+    padding-right:1em;
     white-space: nowrap;
-    text-overflow:ellipsis;
+    @media (min-width:800px) {
+      display: inline !important; 
+    }
+    h5 {
+      margin-bottom: .3em;
+      text-indent: 5px;
+    }
+    li {
+      margin:1em 0em;
+      line-height:4em;
+      font-weight: 500;
+      padding: (2.7em/2) 1em (2.7em/2) 1em;
+      .transition(all .1s);
+    @media (max-width:800px){
+      display: block;
+      margin-top: 0em;
+      margin-bottom: 0em;
+      padding: .1em 1em;
+      line-height: 2em;
+    }
+    @media (max-width:800px){
+      &:hover {
+        background-color:@hoverColor - #444;
+        color: inherit;
+        border-radius: .15em;
+      }
+    }
   }
-  p {
-    line-height: .5em;
-    margin-bottom: 1em;
-    color: gray;
-    font-size: .7em;
-    text-align: center;
+    @media (max-width:800px){
+      padding: 2em;
+      background-color: @hoverColor;
+      color: @bgColor;
+      display: none;
+    }
   }
-}
-.ui-branch {
-  margin-left: 1em !important;
-  font-size: .8em;
-  p {
-    display: inline;
-  }
-}
-#ui-data-menu {
-  margin-top: -2.5em;
+#tools {
+  max-height: 15em;
+  overflow: scroll;
+  position: relative;
+  padding:1.5em;  
+  background-color: @hoverColor - #222;
   display: none;
-}
+  font-size: 1.2em;
+  white-space: nowrap;
+  color: @bgColor;
+  li {
+      margin:1em 0em;
+      line-height:4em;
+      font-weight: 500;
+      padding: (2.7em/2) 1em (2.7em/2) 1em;
+      .transition(all .1s);
+    @media (max-width:800px){
+      display: block;
+      margin-top: 0em;
+      margin-bottom: 0em;
+      padding: .1em 1em;
+      line-height: 2em;
+    }
+  }
+  .row:nth-child(odd) {
+    background-color: @hoverColor + #444;
+  }
+  h5 {
+      margin-bottom: .3em;
+      text-indent: 5px;
+  }
 
+  span {
+    margin-left: 2em;
+    overflow: ellipsis;
+    color: gray;
+  }
+  i {
+    margin-right: 1em;
+  }
+}
 
 /* ==========================================================================
    Gallery classes (Community Wall and Portfolios)
@@ -685,7 +780,7 @@ li {
     display: none;
 
     width: 100%;
-    height: 550px;
+    height: 100%;
 }
 
 .galereya *,
@@ -1097,7 +1192,7 @@ li {
 }
 
 /* Other devices and screens */
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 750px) {
     .galereya-cell,
     .galereya-cell-img {
         width: 300px;
@@ -1131,7 +1226,58 @@ li {
 
 
 /* ==========================================================================
-   Helper classes
+   Helper Classes
    ========================================================================== */
 
 .hidden,.invisible{visibility:hidden}.hidden{display:none!important}.visuallyhidden{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;margin:0;overflow:visible;position:static;width:auto}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix:after{clear:both}
+
+
+/* ==========================================================================
+   Mobile Responsive Table
+   ========================================================================== */
+
+@media 
+only screen and (max-width: 770px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+  th:first-child,
+  td:first-child {
+  padding-left: 50%; }
+
+  th:last-child,
+  td:last-child {
+  padding-left: 50%; }
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr { 
+    display: block; 
+  }
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr { 
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  
+  tr { border: 1px solid #ccc; }
+  
+  td { 
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+    padding-left: 50%; 
+  }
+  
+  td:before { 
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: .4em;
+    left: 8px;
+    width: 45%; 
+    padding-right: 10px; 
+    white-space: nowrap;
+    font-weight: bold;
+  }
+}
