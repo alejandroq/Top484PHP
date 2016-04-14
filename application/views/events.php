@@ -9,11 +9,14 @@
       td:nth-of-type(4):before { content: "Location"; }
     }
 </style>
+
+<div ui-view></div>
+
 <div class="container">
     <h3>Events</h3>
     <div class="row">
         <div ng-controller="TableController">
-          <input type="text" ng-model="searchFilter" placeholder="Filter" class="five columns" list="x">
+          <input type="text" ng-model="searchFilter" placeholder="Search" class="five columns" list="x">
           <datalist id="x">
               <option value="B-Boying"></option>
               <option value="DJing"></option>
@@ -21,7 +24,7 @@
               <option value="Knowledge of Self"></option>
               <option value="MCcing"></option>
           </datalist>
-          <button class="button-primary four columns">
+          <button ui-sref=".manage" class="button-primary four columns">
             <i class="fa fa-plus"></i>
             <span>Add Events</span>
           </button>

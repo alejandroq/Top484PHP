@@ -21,14 +21,14 @@
 	// $data = json_decode($data);
 	//END TEST DATA
 
-	$EventName = $data->EventName;	
-	$EventType = $data->EventType;
-	$EventDescription = $data->EventDescription;
+	$EventName = filter_var($data->EventName, FILTER_SANITIZE_STRING);	
+	$EventType = filter_var($data->EventType, FILTER_SANITIZE_STRING);
+	$EventDescription = filter_var($data->EventDescription, FILTER_SANITIZE_STRING);
 	$EventDateTime = $data->EventDateTime;
-	$EventLocation = $data->EventLocation;
-	$PrimaryContact = $data->PrimaryContact;
+	$EventLocation = filter_var($data->EventLocation, FILTER_SANITIZE_STRING);
+	$PrimaryContact = filter_var($data->PrimaryContact, FILTER_SANITIZE_STRING);
 	$PCEmail = $data->PCEmail;
-	$PCPhone = $data->PCPhone;
+	$PCPhone = filter_var($data->PCPhone, FILTER_SANITIZE_STRING);
 		
 	$db = DB::getInstance();
 	$sql = "INSERT INTO WBLEvent (EventName, EventType, EventDescription, EventDateTime, EventLocation, PrimaryContact, PCEmail, PCPhone) VALUES ('$EventName', '$EventType', '$EventDescription', '$EventDateTime', '$EventLocation', '$PrimaryContact', '$PCEmail', '$PCPhone')";

@@ -4,7 +4,7 @@ header('Content-Type: application/json');
 include '../../connection.php';
 
 $db = DB::getInstance();
-$sql = 'SELECT EventName, EventType, EventDateTime, EventLocation from WBLEvent';
+$sql = 'SELECT * from WBLEvent';
 $req = $db->query($sql);
 
 $data = array();

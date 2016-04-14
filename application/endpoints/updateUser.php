@@ -31,20 +31,20 @@
 	// $data = json_decode($data);
 	//END TEST DATA
 
-	$FirstName = $data->FirstName;
-	$LastName = $data->LastName;
-	$Gender = $data->Gender;
-	$HomePhone = $data->HomePhone;
-	$HomeAddress = $data->HomeAddress;
-	$City = $data->City;
-	$State = $data->State;
-	$ZIP = $data->ZIP;
-	$DOB = $data->DOB;
-	$Password = $data->Password;
-	$UserType = $data->UserType;	
-	$ShirtSize = $data->ShirtSize;
-	$Race = $data->Race;
-	$CellPhone = $data->CellPhone;
+	$FirstName = filter_var($data->FirstName,FILTER_SANITIZE_STRING);
+	$LastName = filter_var($data->LastName,FILTER_SANITIZE_STRING);
+	$Gender = filter_var($data->Gender,FILTER_SANITIZE_STRING);
+	$HomePhone = filter_var($data->HomePhone,FILTER_SANITIZE_STRING);
+	$HomeAddress = filter_var($data->HomeAddress,FILTER_SANITIZE_STRING);
+	$City = filter_var($data->City,FILTER_SANITIZE_STRING);
+	$State = filter_var($data->State,FILTER_SANITIZE_STRING);
+	$ZIP = filter_var($data->ZIP,FILTER_SANITIZE_STRING);
+	$DOB = filter_var($data->DOB,FILTER_SANITIZE_STRING);
+	$Password = filter_var($data->Password,FILTER_SANITIZE_STRING);
+	$UserType = filter_var($data->UserType;,FILTER_SANITIZE_STRING)	
+	$ShirtSize = filter_var($data->ShirtSize,FILTER_SANITIZE_STRING);
+	$Race = filter_var($data->Race,FILTER_SANITIZE_STRING);
+	$CellPhone = filter_var($data->CellPhone,FILTER_SANITIZE_STRING);
 
 	$db = DB::getInstance();
 

@@ -20,20 +20,27 @@
 	// $data = json_decode($data);
 	//END TEST DATA
 
-	$EventID = $data->EventID;
-	$EventName = $data->EventName;	
-	$EventType = $data->EventType;
-	$EventDescription = $data->EventDescription;
-	$EventDateTime = $data->EventDateTime;
-	$EventLocation = $data->EventLocation;
-	$PrimaryContact = $data->PrimaryContact;
-	$PCEmail = $data->PCEmail;
-	$PCPhone = $data->PCPhone;
+	$EventID = filter_var($data->EventID,FILTER_SANITIZE_STRING);
+	$EventName = filter_var($data->EventName,FILTER_SANITIZE_STRING);	
+	$EventType = filter_var($data->EventType,FILTER_SANITIZE_STRING);
+	$EventDescription = filter_var($data->EventDescription,FILTER_SANITIZE_STRING);
+	$EventDateTime = filter_var($data->EventDateTime,FILTER_SANITIZE_STRING);
+	$EventLocation = filter_var($data->EventLocation,FILTER_SANITIZE_STRING);
+	$PrimaryContact = filter_var($data->PrimaryContact,FILTER_SANITIZE_STRING);
+	$PCEmail = filter_var($data->PCEmail,FILTER_SANITIZE_STRING);
+	$PCPhone = filter_var($data->PCPhone,FILTER_SANITIZE_STRING);
 		
-
 	$db = DB::getInstance();
-	$sql = "UPDATE WBLEvent SET EventName='$EventName', EventType='$EventType', EventDescription='$EventDescription', EventDateTime='$EventDateTime', EventLocation='$EventLocation', PrimaryContact='$PrimaryContact', PCEmail='$PCEmail', PCPhone='$PCPhone' WHERE EventID = " .  $EventID;
-	$query = $db->query($sql);
+
+	if ($EventDateTime != "") {
+		$sql = "UPDATE WBLEvent SET EventName='$EventName', EventType='$EventType', EventDescription='$EventDescription', EventDateTime='$EventDateTime', EventLocation='$EventLocation', PrimaryContact='$PrimaryContact', PCEmail='$PCEmail', PCPhone='$PCPhone' WHERE EventID = " .  $EventID;
+		print_r($sql);
+		$query = $db->query($sql);
+	} else {
+		$sql = "UPDATE WBLEvent SET EventName='$EventName', EventType='$EventType', EventDescription='$EventDescription', EventLocation='$EventLocation', PrimaryContact='$PrimaryContact', PCEmail='$PCEmail', PCPhone='$PCPhone' WHERE EventID = " .  $EventID;
+		print_r($sql);
+		$query = $db->query($sql);
+	}
 	print_r($sql);
 
 ?>

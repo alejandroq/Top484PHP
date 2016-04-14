@@ -19,10 +19,10 @@ $data = json_decode(file_get_contents("php://input"));
 // $data = json_decode($data);
 //END TEST DATA
 
-$CourseName=$data->CourseName;
-$CourseDescription=$data->CourseDescription;
-$CourseElement=$data->CourseElement;
-$LessonPlan=$data->LessonPlan;
+$CourseName=filter_var($data->CourseName,FILTER_SANITIZE_STRING);
+$CourseDescription=filter_var($data->CourseDescription,FILTER_SANITIZE_STRING);
+$CourseElement=filter_var($data->CourseElement,FILTER_SANITIZE_STRING);
+$LessonPlan=filter_var($data->LessonPlan,FILTER_SANITIZE_STRING);
 
 $db = DB::getInstance();
 $sql = "SELECT COUNT(*)Count FROM Course";

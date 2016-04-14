@@ -1,4 +1,4 @@
-myApp.controller("TableController", function ($scope, $http, $location, AuthenticationService) {
+myApp.controller("TableController", function ($scope, $state, $http, $location, AuthenticationService, ExchangeService) {
 	    
 	    AuthenticationService.checkToken();
 
@@ -7,14 +7,12 @@ myApp.controller("TableController", function ($scope, $http, $location, Authenti
 	        $scope.data = data;
 	    });
 
-	    //functions (add, delete)
-		$scope.setMaster = function(data) {
-        	$scope.selected = data;
+	    $scope.setMaster = function(data) {
+	        $scope.selected === data;
+	        ExchangeService.addData(data);
+	        $state.go(".manage");
 	    }
 
-	    $scope.isSelected = function(data) {
-	        return $scope.selected === data;
-	    }
-
-	    // $scope.
+	    // functions, profiles, create news, permissions, perhaps set it so the most valuable inforation is presnet, and new inputs fill tables immediately sans reload. Do little, but do it very well. spanding background
+	    // ENROOL 
 	});

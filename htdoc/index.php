@@ -120,7 +120,11 @@
     		<script src="../application/controllers/mainController.js"></script>
     		<script src="../application/controllers/homeController.js"></script>
     		<script src="../application/controllers/tableController.js"></script>
-    		<script src="../application/services/authenticate-services.js"></script>    		
+    		<script src="../application/controllers/courseController.js"></script>
+    		<script src="../application/controllers/directoryController.js"></script>
+    		<script src="../application/controllers/eventsController.js"></script>
+    		<script src="../application/services/authenticate-services.js"></script> 
+    		<script src="../application/services/exchangeService.js"></script>    		
 		<!-- END SCRIPTS -->
 	</body>
 </html>

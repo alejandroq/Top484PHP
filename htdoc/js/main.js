@@ -74,3 +74,8 @@
 	$('#news').on('click', function() {
 		$('#tools').toggle(200).empty();
 	});
+	$('#account').on('click', function() {
+		var html = '<li><i class="fa fa-user"></i>Edit My Account</li>';
+		html += '<li ng-method="logout()"><i class="fa fa-sign-out"></i>Logout</li>';
+		$('#tools').toggle(200).empty().html(html);
+	});

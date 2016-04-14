@@ -9,19 +9,22 @@
       td:nth-of-type(4):before { content: "Location"; }
 	}
 </style>
+
+<div ui-view></div>
+
 <div class="container">
 	<h3>Courses</h3>
 	<div class="row">
     	<div ng-controller="TableController">
           <input type="text" ng-model="searchFilter" placeholder="Filter" class="five columns" list="x">
           <datalist id="x">
-	          <option value="B-Boying"></option>
+	          <option value="BBoying"></option>
 	          <option value="DJing"></option>
-	          <option value="Grafiti"></option>
+	          <option value="Graffiti"></option>
 	          <option value="Knowledge of Self"></option>
 	          <option value="MCcing"></option>
           </datalist>
-		  <button class="button-primary four columns">
+		  <button ui-sref=".manage" class="button-primary four columns">
           	<i class="fa fa-plus"></i>
           	<span>Add Course</span>
           </button>
@@ -53,7 +56,6 @@
                                 <span ng-show="sortType == 'Location' && sortReverse" class="fa fa-caret-up"></span>
                             </a>               
                         </td>
-    					<td></td>
                         <td></td>
                     </tr>
                 </thead>
@@ -63,7 +65,6 @@
                         <td>{{courses.CourseElement}}</td>
                         <td>{{courses.SeatsLeft}}</td>
                         <td>{{courses.Location}}</td>
-                        <td><a ng-click="setMaster(courses)">Add Lesson Plan</a></td>
     					<td><a ng-click="setMaster(courses)">Update Course</a></td>
                     </tr>
                 </tbody>

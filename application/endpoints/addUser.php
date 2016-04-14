@@ -33,7 +33,7 @@
 	// 	"ManagerEmail"=>"Mazi@WBL.org",
 	// 	"AdminTitle"=>"President of Africa",
 	// 	"HireDate"=>"2000/01/01",
-	// 	"AdminEmailAddress" => "Mazi@WBL.org",
+	// 	"AdminEmailAddress" => "SUPAHOTFIRE@WBL.org",
 	// 	"StaffType"=>"Intern",
 	// 	"Specialty"=>"Rapping",
 	// 	"LetterCount"=>3,
@@ -45,26 +45,26 @@
 	// $data = json_decode($data);
 	//END TEST DATA
 
-	$EmailAddress = $data->EmailAddress;
-	$FirstName = $data->FirstName;
-	$LastName = $data->LastName;
-	$Gender = $data->Gender;
-	$HomePhone = $data->HomePhone;
-	$HomeAddress = $data->HomeAddress;
-	$City = $data->City;
-	$State = $data->State;
-	$ZIP = $data->ZIP;
-	$DOB = $data->DOB;
-	$Password = $data->Password;
-	$UserType = $data->UserType;
-	$PasswordHash = $data->PasswordHash;
-	$ShirtSize = $data->ShirtSize;
-	$UserPermission = $data->UserPermission;
-	$LastLogin = $data->LastLogin;
-	$Race = $data->Race;
-	$CellPhone = $data->CellPhone;
-	$JoinDate = $data->JoinDate;
-	$Activated = $data->Activated;
+	$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
+	$FirstName = filter_var($data->FirstName, FILTER_SANITIZE_STRING);
+	$LastName = filter_var($data->LastName, FILTER_SANITIZE_STRING);
+	$Gender = filter_var($data->Gender, FILTER_SANITIZE_STRING);
+	$HomePhone = filter_var($data->HomePhone, FILTER_SANITIZE_STRING);
+	$HomeAddress = filter_var($data->HomeAddress, FILTER_SANITIZE_STRING);
+	$City = filter_var($data->City, FILTER_SANITIZE_STRING);
+	$State = filter_var($data->State, FILTER_SANITIZE_STRING);
+	$ZIP = filter_var($data->ZIP, FILTER_SANITIZE_STRING);
+	$DOB = filter_var($data->DOB, FILTER_SANITIZE_STRING);
+	$Password = filter_var($data->Password, FILTER_SANITIZE_STRING);
+	$UserType = filter_var($data->UserType, FILTER_SANITIZE_STRING);
+	$PasswordHash = filter_var($data->PasswordHash, FILTER_SANITIZE_STRING);
+	$ShirtSize = filter_var($data->ShirtSize, FILTER_SANITIZE_STRING);
+	$UserPermission = filter_var($data->UserPermission, FILTER_SANITIZE_STRING);
+	$LastLogin = filter_var($data->LastLogin, FILTER_SANITIZE_STRING);
+	$Race = filter_var($data->Race, FILTER_SANITIZE_STRING);
+	$CellPhone = filter_var($data->CellPhone, FILTER_SANITIZE_STRING);
+	$JoinDate = filter_var($data->JoinDate, FILTER_SANITIZE_STRING);
+	$Activated = filter_var($data->Activated, FILTER_SANITIZE_STRING);
 	$token = "LOGGED OUT";
 
 	$db = DB::getInstance();
@@ -95,10 +95,10 @@
 
 	switch ($UserType) {
 		case 'Administrator':
-			$EmailAddress = $data->EmailAddress;
-			$ManagerEmail = $data->ManagerEmail;
-			$AdminTitle = $data->AdminTitle;
-			$HireDate = $data->HireDate;
+			$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
+			$ManagerEmail = filter_var($data->ManagerEmail, FILTER_SANITIZE_STRING);
+			$AdminTitle = filter_var($data->AdminTitle, FILTER_SANITIZE_STRING);
+			$HireDate = filter_var($data->HireDate, FILTER_SANITIZE_STRING);
 
 			$sql = "Insert INTO Administrator(EmailAddress, ManagerEmail, AdminTitle, HireDate) Values('$EmailAddress', '$ManagerEmail', '$AdminTitle', '$HireDate')";
 			print_r($sql);
@@ -106,11 +106,11 @@
 			break;
 
 		case 'Staff':
-			$EmailAddress = $data->EmailAddress;
-			$AdminEmailAddress = $data->AdminEmailAddress;
-			$HireDate = $data->HireDate;
-			$StaffType = $data->StaffType;
-			$Specialty = $data->Specialty;
+			$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
+			$AdminEmailAddress = filter_var($data->AdminEmailAddress, FILTER_SANITIZE_STRING);
+			$HireDate = filter_var($data->HireDate, FILTER_SANITIZE_STRING);
+			$StaffType = filter_var($data->StaffType, FILTER_SANITIZE_STRING);
+			$Specialty = filter_var($data->Specialty, FILTER_SANITIZE_STRING);
 
 			$sql = "Insert INTO Staff(EmailAddress, AdminEmailAddress, HireDate, StaffType, Specialty) Values('$EmailAddress', '$AdminEmailAddress', '$HireDate', '$StaffType', '$Specialty')";
 			print_r($sql);
@@ -118,7 +118,7 @@
 			break;
 
 		case 'Student':
-			$EmailAddress = $data->EmailAddress;
+			$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
 	
 			$sql = "Insert INTO Student(EmailAddress) Values('$EmailAddress')";
 			print_r($sql);
@@ -126,9 +126,9 @@
 			break;
 
 		case 'Parent':
-			$EmailAddress = $data->EmailAddress;
-			$LetterCount = $data->LetterCount;
-			$Relationship = $data->Relationship;
+			$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
+			$LetterCount = filter_var($data->LetterCount, FILTER_SANITIZE_STRING);
+			$Relationship = filter_var($data->Relationship, FILTER_SANITIZE_STRING);
 	
 			$sql = "Insert INTO Parent(EmailAddress, LetterCount, Relationship) VALUES ('$EmailAddress', $LetterCount, '$Relationship')";
 			print_r($sql);
@@ -136,8 +136,8 @@
 			break;
 
 		case 'Cipher':
-			$EmailAddress = $data->EmailAddress;
-			$BoolPaid = $data->BoolPaid;
+			$EmailAddress = filter_var($data->EmailAddress, FILTER_SANITIZE_STRING);
+			$BoolPaid = filter_var($data->BoolPaid, FILTER_SANITIZE_STRING);
 
 			$sql = "Insert INTO Cipher(EmailAddress, BoolPaid) Values('$EmailAddress', $BoolPaid)";
 			print_r($sql);

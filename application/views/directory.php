@@ -8,6 +8,9 @@
 	  td:nth-of-type(3):before { content: "Email"; }
 	}
 </style>
+
+<div ui-view></div>
+
 <div class="container">
 	<h3 class="row">Directory</h3>
 	<div class="row">
@@ -20,7 +23,7 @@
 			     <option value="Parent"></option>
 	         <option value="Student"></option>
           </datalist>
-          <button class="button-primary four columns">
+          <button ui-sref=".manage" class="button-primary four columns">
           	<i class="fa fa-plus"></i>
           	<span>Add User</span>
           </button>
